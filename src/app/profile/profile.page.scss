@@ -1,0 +1,67 @@
+.item {
+    width: 30%;
+    aspect-ratio: 16 / 10;
+    box-shadow: 5px 5px 10px rgba($color: #000000, $alpha: 0.25);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+}
+
+.item:first-child{
+    background-image: url('/assets/images/front-end-developer.png');
+    background-size: cover;
+}
+
+.item:nth-child(2){
+    background-image: url('/assets/images/back-end-developer.png');
+    background-size: cover;
+}
+
+.item:last-child{
+    background-image: url('/assets/images/programming.png');
+    background-size: cover;
+}
+
+.training {
+    background-color: #fff;
+    box-shadow: 2px 2px 25px rgba($color: #000000, $alpha: 0.15);
+    border-radius: 15px;
+}
+
+.training > img {
+    border-radius: 15px 15px 0px 0px;
+}
+
+.content {
+    text-align: center;
+}
+.content > p:last-child {
+    text-align: justify;
+}
+
+.content > h2 {
+    font-weight: 800;
+}
+
+.price {
+    border-radius: 0 0 15px 15px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #fff;
+}
+
+
+.selected {
+    filter: grayscale(80%)
+}
+.selected > p {
+    display: none;
+}
+
+.selected > i {
+    display:block !important;
+    transform: translate(5px,-5px);
+}

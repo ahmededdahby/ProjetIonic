@@ -1,0 +1,47 @@
+
+<ion-content>
+    <div class="container mt-4 d-flex flex-column align-items-center">
+      <img src="/assets/images/logo.jpg" width="100px" alt="">
+      <h3 class="text-center">There is always a place where to learn {{user?.name}}</h3>
+        <h3 class="align-self-start ms-2 mt-4">Categories</h3>
+        <div class="categories my-3 d-flex justify-content-around w-100">
+            <div [ngClass]="['item', selectedCategory=='Front-End'?'selected':'']" (click)="selectCategory($event,'Front-End')">
+                <p class="m-0">Front-End</p>
+                <i class="d-none icon check" style="font-size: 30px;"></i>
+            </div> 
+            <div [ngClass]="['item', selectedCategory=='Back-End'?'selected':'']"  (click)="selectCategory($event,'Back-End')">
+                <p class="m-0">Back-End</p>
+                <i class="d-none icon check" style="font-size: 30px;"></i>
+            </div> 
+            <div [ngClass]="['item', selectedCategory=='Programming'?'selected':'']"  (click)="selectCategory($event,'Programming')">
+                <p class="m-0">Programming</p>
+                <i class="d-none icon check" style="font-size: 30px;"></i>
+            </div> 
+        </div>
+
+        <h3 class="align-self-start ms-2 mt-5">Trainings</h3>
+        <div class="container">
+          <div class="row gy-5">
+            <ng-container *ngFor="let training of trainings" >
+              <div class="offset-2 col-8 col-md-4 px-2" *ngIf="filterCategories(training)">
+                <div class="training">
+                  <img [src]="training.image" width="100%" alt="">
+                  <div class="content py-5 px-2">
+                     <p style="font-size: 14px; font-weight: 600;" [style.color]="training.color" class="my-0">{{calculateLeft(training.date)}} days left</p>
+                      <h2 class="my-2">{{training.name}}</h2>
+                      <p class="my- px-2">{{training.description}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quis asperiores rem repellendus cum .</p>
+                  </div>
+                  <div role="button" class="price text-center py-2" [style.backgroundColor]="training.color" >
+                      <p (click)="enrollTraining(training)" *ngIf="!isEnrolled(training)">{{training.price}} DH</p>
+                      <p class="text-success" *ngIf="isEnrolled(training)"> <i class="icon check"></i> Enrolled</p>
+                  </div>
+                </div>
+                
+            </div>
+            </ng-container>
+            
+          </div>
+            
+        </div>
+    </div> 
+</ion-content>

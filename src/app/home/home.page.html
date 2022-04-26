@@ -1,0 +1,73 @@
+
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+  </ion-header>
+  
+
+
+  <div id="container">
+
+    <img src="/assets/images/logo-1.jpg" width="50%" alt="">
+    <div class="container d-flex flex-column align-items-center justify-content-center">
+      <div class="toggle-login-register mb-3 position-relative py-2">
+          <button class="btn selected" #loginBtn (click)="toggleFormHandler(selector, loginBtn, signupBtn)">Login</button>
+          <button class="btn" #signupBtn (click)="toggleFormHandler(selector, loginBtn, signupBtn)">Sign up</button>
+          <div class="selector" #selector></div>
+      </div>
+      <form action="" class="w-75" (ngSubmit)="formLogin()" *ngIf="toggleForm == 'login'">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input name="email" type="email" class="form-control" [(ngModel)]="email">
+        </div>
+        
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" [(ngModel)]="password">
+        </div>
+        <input type="submit" value="Login" class="btn btn-primary px-5" style="background-color: #F71CF1; color: #fff;">
+      </form>
+      <form action="" class="w-75" (ngSubmit)="formSignUp()" *ngIf="toggleForm == 'signup'">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input name="email" type="email" class="form-control" [(ngModel)]="user.email">
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Name</label>
+          <input name="name" type="email" class="form-control" [(ngModel)]="user.name">
+        </div>
+        
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" [(ngModel)]="user.password">
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Confirm password</label>
+          <input type="password" name="passwordcheck" class="form-control" [(ngModel)]="signPasswordCheck">
+          <div class="form-text text-danger" *ngIf="user.password != signPasswordCheck">Password does not match</div>
+        </div>
+        <input type="submit" value="Sign Up" class="btn px-5" style="background-color: #F71CF1; color: #fff;" [disabled]="user.email == null || user.name == null || user.password != signPasswordCheck">
+      </form>
+    </div>
+    
+  </div>
+  <div class="ui inverted" *ngIf="loading">
+    <div class="ui active dimmer">
+      <div class="ui text loader">Loading</div>
+    </div>
+  </div>
+  <div id="login-error" class="position-absolute w-100 px-3" style="bottom: 20px; opacity: 0;">
+    <div class="ui icon negative message red" >
+      <i class="icon exclamation triangle"></i>
+      <div class="content">
+        <div class="header">
+          Connection Error
+        </div>
+        <p>Incorrect email or password.</p>
+      </div>
+    </div>
+  </div>
+  
+</ion-content>
